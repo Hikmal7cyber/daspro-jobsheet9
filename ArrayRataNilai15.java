@@ -3,19 +3,35 @@ import java.util.Scanner;
 public class ArrayRataNilai15 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int [] nilaiMhs = new int [10];
-        double total = 0, rata2;
+        System.out.print("Masukan jumlah mahasiswa = ");
+        int jumlahMahasiswa = sc.nextInt();
 
-        for (int i = 0 ;i<nilaiMhs.length;i++) {
+        int [] nilaiMhs= new int[jumlahMahasiswa];
+        double totalLulus = 0, totalTidakLulus = 0;
+        int jumlahLulus = 0, jumlahTidakLulus = 0;
+
+       
+
+        for (int i = 0 ;i<nilaiMhs.length;i++  ) {
             System.out.print("Masukan nilai mahasiswa ke - "+(i+1) + " :");
             nilaiMhs [i] = sc.nextInt() ;
         }
         
-        for (int i = 0; i<nilaiMhs.length;i++) {
-            total += nilaiMhs[i];
+        for (int nilai : nilaiMhs) {
+            if (nilai >70) {
+                totalLulus += nilai;
+                jumlahLulus++;
+            } else {
+                totalTidakLulus += nilai;
+                jumlahTidakLulus++;
+            }
         }
-
-        rata2 = total/nilaiMhs.length;
-        System.out.println("Rata-rata nilai = " + rata2);
+        double rataLulus = (jumlahLulus > 0) ? totalLulus /jumlahLulus : 0;
+        double rataTidakLulus = (jumlahTidakLulus > 0) ? totalTidakLulus / jumlahTidakLulus : 0;
+        
+        System.out.println("Rata-rata nilai mahasiswa yang lulus = " + rataLulus);
+        System.out.println("Rata-rata nilai mahasiswa yang tidak lulus = " + rataTidakLulus);
+        
     }
 }
+
